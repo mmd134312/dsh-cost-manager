@@ -53,6 +53,15 @@
     "峰谷定价",
     "token 用量"
   ],
+  "topics": [
+    "dsh-plugin",
+    "deepseek-harness",
+    "dsh",
+    "cordis-plugin",
+    "cost-meter",
+    "token-usage",
+    "billing"
+  ],
   "dsh": {
     "category": "extension",
     "displayName": "花费计量",
