@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="330" viewBox="0 0 900 330" role="img" aria-label="底部读数行里多出的一格「已用人民币 6.95」，以及点击后弹出的明细面板">
+  <title>底部读数行里多出的一格「已用人民币 6.95」+ 点击后的明细面板</title>
+  <desc>界面复刻，非真机截图。样式取自插件与官方组件同一套 CSS，见 assets/mockup.html。</desc>
+
+  <rect width="900" height="330" fill="#1b1d22"/>
+  <g font-family="system-ui, -apple-system, 'Segoe UI', 'Microsoft YaHei', sans-serif">
+
+    <!-- ================= 上：对话底部那一行 ================= -->
+    <text x="30" y="34" fill="#8b929c" font-size="12">对话底部那一行</text>
+
+    <g font-size="13" fill="#9aa1ab">
+      <!-- 原生读数粒 1：轮次 / 步骤 / 速度 -->
+      <circle cx="38" cy="70" r="6.5" fill="none" stroke="#6f7783" stroke-width="1.6"/>
+      <text x="56" y="75">13 轮 641 步</text>
+      <text x="144" y="75" fill="#5b6169">·</text>
+      <text x="160" y="75">268 tok/s</text>
+
+      <!-- 原生读数粒 2：token 用量 + 缓存命中 -->
+      <ellipse cx="276" cy="70" rx="7" ry="5.5" fill="none" stroke="#6f7783" stroke-width="1.6"/>
+      <text x="294" y="75">194M tok</text>
+      <text x="366" y="75" fill="#5b6169">·</text>
+      <text x="382" y="75">缓存命中 99.7%</text>
+
+      <!-- 本插件那一格：带悬停态的浅灰圆角底 -->
+      <rect x="524" y="55" width="184" height="30" rx="15" fill="#2a2e36"/>
+      <ellipse cx="546" cy="70" rx="7" ry="5.5" fill="none" stroke="#9aa1ab" stroke-width="1.6"/>
+      <text x="564" y="75" fill="#c9ced6">已用人民币 6.95</text>
+
+      <!-- 原生读数粒 3：上下文占用 -->
+      <circle cx="752" cy="70" r="6.5" fill="none" stroke="#5b6169" stroke-width="1.6"/>
+      <circle cx="752" cy="70" r="6.5" fill="none" stroke="#8b929c" stroke-width="1.6"
+              stroke-dasharray="40.7 40.84" transform="rotate(-90 752 70)"/>
+      <text x="770" y="75">99.7%</text>
+    </g>
+
+    <path d="M616 88 L616 104" stroke="#4a5058" stroke-width="1"/>
+    <text x="616" y="120" fill="#7d848e" font-size="11" text-anchor="middle">这一格 · 悬停只变灰底，不弹任何浮层</text>
+
+    <!-- 分隔 -->
+    <line x1="30" y1="148" x2="870" y2="148" stroke="#2b2f36" stroke-width="1"/>
+    <text x="30" y="174" fill="#8b929c" font-size="12">点击之后，格子【上方】弹出这张左对齐明细面板</text>    <!-- ================= 下：明细面板 ================= -->
+    <g transform="translate(30,190)">
+      <rect x="0" y="0" width="360" height="120" rx="12" fill="#24272e" stroke="#33373f" stroke-width="1"/>
+
+      <!-- 标题行：图标 + 标题 + 金额 -->
+      <ellipse cx="24" cy="26" rx="7" ry="5.5" fill="none" stroke="#c9ced6" stroke-width="1.4"/>
+      <text x="42" y="31" fill="#e8eaee" font-size="13" font-weight="600">本会话花费</text>
+      <text x="336" y="31" fill="#e8eaee" font-size="13" font-weight="600" text-anchor="end">¥6.95</text>
+
+      <!-- .5px 分隔线 -->
+      <line x1="14" y1="45" x2="346" y2="45" stroke="#33373f" stroke-width="0.5"/>
+
+      <!-- dl 两列明细（示意前四行） -->
+      <g font-size="12">
+        <text x="14" y="65" fill="#9aa1ab">缓存命中</text>
+        <text x="346" y="65" fill="#c9ced6" text-anchor="end">99%</text>
+
+        <text x="14" y="83" fill="#9aa1ab">未缓存输入</text>
+        <text x="346" y="83" fill="#c9ced6" text-anchor="end">1,284,501</text>
+
+        <text x="14" y="101" fill="#9aa1ab">缓存读取</text>
+        <text x="346" y="101" fill="#c9ced6" text-anchor="end">37,204,882</text>
+
+        <text x="14" y="119" fill="#9aa1ab">输出</text>
+        <text x="346" y="119" fill="#c9ced6" text-anchor="end">486,320</text>
+      </g>
+    </g>
+
+    <!-- 面板其余行说明 -->
+    <g font-size="12" fill="#6f7783">
+      <text x="414" y="222">…后面还有：</text>
+      <text x="414" y="244">单价（元 / 1M tok）· 计费调用（含回溯次数）</text>
+      <text x="414" y="264">高峰时段 · 空闲时段 · 当前时段与切换倒计时</text>
+      <text x="414" y="284">价目版本 · 模型 · 缓存命中率 · 三类 token 分开计</text>
+    </g>
+  </g>
+</svg>

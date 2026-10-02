@@ -1,0 +1,69 @@
+{
+  "name": "dsh-cost-meter",
+  "version": "1.2.0",
+  "description": "给 DeepSeek Harness 底部读数行补一格「已用人民币 X」：只统计 DeepSeek 官方通道，按峰谷定价算实际花费，缓存命中/未命中/输出三类 token 分别计价，每个会话独立记账，支持回溯补齐历史调用；第三方中转渠道一律不显示。",
+  "private": false,
+  "type": "module",
+  "license": "MIT",
+  "author": "mmd134312",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmd134312/dsh-cost-manager.git"
+  },
+  "homepage": "https://github.com/mmd134312/dsh-cost-manager#readme",
+  "bugs": {
+    "url": "https://github.com/mmd134312/dsh-cost-manager/issues"
+  },
+  "engines": {
+    "node": ">=22.19.0",
+    "dsh": ">=0.2.0-rc.2"
+  },
+  "main": "./dsh-cost-meter.mjs",
+  "exports": {
+    ".": "./dsh-cost-meter.mjs",
+    "./client": "./client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "client.js",
+    "locale",
+    "cordis.patch.yml",
+    "dsh-cost-meter.mjs",
+    "README.md",
+    "INSTALL.md",
+    "UI-NOTES.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "deepseek",
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "cordis",
+    "cost",
+    "cost-meter",
+    "token",
+    "usage",
+    "billing",
+    "pricing",
+    "花费",
+    "计费",
+    "峰谷定价",
+    "token 用量"
+  ],
+  "dsh": {
+    "category": "extension",
+    "displayName": "花费计量",
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-connection"
+      ],
+      "platform": "web"
+    }
+  }
+}

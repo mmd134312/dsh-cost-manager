@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>dsh-cost-meter —— 截图素材（界面复刻）</title>
+<style>
+  /* 这是一个**离线复刻**页面，用来生成 README 里的截图：
+   * 样式逐条抄自插件与官方组件（见 ../UI-NOTES.md），所以截出来和真机一致。
+   * 用法：在浏览器里打开，把下面两块各截一张，存成 assets/screenshot-1.png（读数行）
+   * 与 assets/screenshot-2.png（明细面板）。真实截图更好 —— 这个只是备用。 */
+  :root {
+    --dsw-alias-label-primary: #0f1115;
+    --dsw-alias-label-secondary: #61666b;
+    --dsw-alias-label-tertiary: #81858c;
+    --dsw-alias-interactive-bg-hover: rgb(0 0 0 / 6%);
+    --dsw-alias-separator-primary: rgb(0 0 0 / 18%);
+    --dsw-specific-menu: #fbfbfc;
+    --dsw-alias-border-l1: rgb(0 0 0 / 8%);
+    --dsw-alias-border-l2: rgb(0 0 0 / 12%);
+    --dsw-radius-lg: 12px;
+    --dsw-radius-md: 8px;
+    --dsw-elevation-prominent: 0 8px 28px rgb(0 0 0 / 14%), 0 1px 2px rgb(0 0 0 / 8%);
+    --dsw-menu-backdrop-filter: saturate(180%) blur(12px);
+    --dsw-elevation-stroke-color: var(--dsw-alias-border-l1);
+    --dsh-content-font-size-secondary: 13px;
+    --dsh-content-font-delta-secondary: 0px;
+  }
+  body[data-dark] {
+    --dsw-alias-label-primary: #f2f4f7;
+    --dsw-alias-label-secondary: #b6bcc4;
+    --dsw-alias-label-tertiary: #8b929c;
+    --dsw-alias-interactive-bg-hover: rgb(255 255 255 / 8%);
+    --dsw-alias-separator-primary: rgb(255 255 255 / 22%);
+    --dsw-specific-menu: #24272e;
+    --dsw-alias-border-l1: rgb(255 255 255 / 10%);
+    --dsw-alias-border-l2: rgb(255 255 255 / 14%);
+    --dsw-elevation-prominent: 0 8px 28px rgb(0 0 0 / 45%), 0 1px 2px rgb(0 0 0 / 30%);
+  }
+
+  body {
+    margin: 0;
+    padding: 40px;
+    background: #fff;
+    font-family: system-ui, -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif;
+  }
+  body[data-dark] { background: #1b1d22; }
+
+  h2 { font-size: 14px; color: var(--dsw-alias-label-secondary); font-weight: 500; margin: 0 0 14px; }
+  .stage + h2 { margin-top: 46px; }
+  .stage {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 18px;
+    border-radius: 14px;
+    background: var(--dsw-specific-menu);
+    box-shadow: 0 1px 3px rgb(0 0 0 / 8%);
+  }
+
+  /* ---- 抄自原生 StatsPills.module.css ---- */
+  .rule {
+    flex: none;
+    display: inline-flex;
+    font-size: calc(var(--dsh-content-font-size-secondary, 13px) - 1px);
+    line-height: calc(20px + var(--dsh-content-font-delta-secondary, 0px));
+  }
+  .pill {
+    box-sizing: border-box;
+    corner-shape: round;
+    max-width: 100%;
+    color: var(--dsw-alias-label-tertiary);
+    font: inherit;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    background: 0 0;
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    align-items: center;
+    gap: 6px;
+    padding: 1px 8px;
+    display: inline-flex;
+  }
+  .pill svg { flex: none; width: 14px; height: 14px; }
+  .pill:hover, .pill[aria-expanded="true"] {
+    background: var(--dsw-alias-interactive-bg-hover);
+    color: var(--dsw-alias-label-secondary);
+  }
+  .sep { color: var(--dsw-alias-separator-primary); margin: 0 6px; }
+
+  /* ---- 抄自官方 stat-dialog.module.css ---- */
+  .panel {
+    z-index: 1100;
+    box-sizing: border-box;
+    border-radius: var(--dsw-radius-lg);
+    background: var(--dsw-specific-menu);
+    width: max-content;
+    min-width: 300px;
+    max-width: 440px;
+    backdrop-filter: var(--dsw-menu-backdrop-filter);
+    --dsw-elevation-stroke-color: var(--dsw-alias-border-l1);
+    box-shadow: var(--dsw-elevation-prominent);
+    color: var(--dsw-alias-label-secondary);
+    cursor: default;
+    border: 0;
+    padding: 16px;
+    font-size: 12px;
+    line-height: 18px;
+    font-family: inherit;
+  }
+  .title {
+    color: var(--dsw-alias-label-primary);
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    display: flex;
+  }
+  .titleLabel { align-items: center; gap: 6px; min-width: 0; display: inline-flex; }
+  .titleLabel svg { flex: none; width: 14px; height: 14px; }
+  .titleValue { font-variant-numeric: tabular-nums; }
+  .titleRule { border-top: .5px solid var(--dsw-alias-border-l2); margin-bottom: 10px; }
+  .details {
+    color: var(--dsw-alias-label-tertiary);
+    grid-template-columns: minmax(76px, auto) minmax(0, 1fr);
+    gap: 6px 16px;
+    margin: 0;
+    display: grid;
+  }
+  .details dt, .details dd { min-width: 0; margin: 0; }
+  .details dd {
+    color: var(--dsw-alias-label-secondary);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+  }
+</style>
+</head>
+<body>
+
+<h2>1 · 对话底部那一行（把这一块截成 assets/screenshot-1.png）</h2>
+<div class="stage">
+  <span class="rule">
+    <span class="pill">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="39 39" transform="rotate(-90 8 8)"/><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.6" opacity=".28"/></svg>
+      <span>13 轮 641 步</span><span class="sep" aria-hidden="true">·</span><span>268 tok/s</span>
+    </span>
+  </span>
+  <span class="rule">
+    <span class="pill">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.6 3.9c3-2 7.8-2 10.8 0M2.6 3.9v8.2c0 1.1 2.4 2 5.4 2s5.4-.9 5.4-2V3.9M2.6 8c0 1.1 2.4 2 5.4 2s5.4-.9 5.4-2" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+      <span>194M tok</span><span class="sep" aria-hidden="true">·</span><span>缓存命中 99.7%</span>
+    </span>
+  </span>
+  <span class="rule">
+    <button class="pill" type="button">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.6 3.9c3-2 7.8-2 10.8 0M2.6 3.9v8.2c0 1.1 2.4 2 5.4 2s5.4-.9 5.4-2V3.9M2.6 8c0 1.1 2.4 2 5.4 2s5.4-.9 5.4-2" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+      <span>已用人民币 6.95</span>
+    </button>
+  </span>
+  <span class="rule">
+    <span class="pill">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.6" opacity=".28"/><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="10 39" transform="rotate(-90 8 8)"/></svg>
+      <span>99.7%</span>
+    </span>
+  </span>
+</div>
+
+<h2>2 · 点击「已用人民币」弹出的明细面板（截成 assets/screenshot-2.png）</h2>
+<div class="panel">
+  <div class="title">
+    <span class="titleLabel">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.6 3.9c3-2 7.8-2 10.8 0M2.6 3.9v8.2c0 1.1 2.4 2 5.4 2s5.4-.9 5.4-2V3.9M2.6 8c0 1.1 2.4 2 5.4 2s5.4-.9 5.4-2" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>
+      本会话花费
+    </span>
+    <span class="titleValue">¥6.95</span>
+  </div>
+  <div class="titleRule" aria-hidden="true"></div>
+  <dl class="details">
+    <dt>缓存命中</dt><dd>99%</dd>
+    <dt>未缓存输入</dt><dd>1,284,501</dd>
+    <dt>缓存读取</dt><dd>37,204,882</dd>
+    <dt>输出</dt><dd>486,320</dd>
+    <dt>单价（元 / 1M tok）</dt><dd>0.04 / 2 / 8</dd>
+    <dt>计费调用</dt><dd>计价 214 次，含回溯 169 次</dd>
+    <dt>高峰时段</dt><dd>¥2.11（61 次）</dd>
+    <dt>空闲时段</dt><dd>¥4.84（153 次）</dd>
+    <dt>当前时段</dt><dd>高峰档，1 小时 42 分钟后切换</dd>
+    <dt>价目版本</dt><dd>2026-09-10</dd>
+    <dt>模型</dt><dd>deepseek-flash</dd>
+  </dl>
+</div>
+
+<script>
+  // 按 `?dark=1` 切深色主题，方便也出一张深色截图。
+  if (new URLSearchParams(location.search).get('dark') !== null) document.body.dataset.dark = '';
+</script>
+</body>
+</html>

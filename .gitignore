@@ -1,0 +1,22 @@
+# 编辑器 / 系统
+.DS_Store
+Thumbs.db
+*.swp
+
+# 插件运行期数据（永远不该进仓库）
+ledger.json
+cost-config.json
+!examples/cost-config.json
+
+# 本地打包 / 发布产物
+*.tgz
+*.log
+
+# 开发期备份快照（profile 补丁等）
+*.before-*
+*.desktop-backup
+*.desktop-before-*
+*.web-backup
+
+# 同一份浏览器半的旧副本：现在规范位置是仓库根目录的 client.js
+lib/

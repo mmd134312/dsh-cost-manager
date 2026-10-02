@@ -1,0 +1,17 @@
+# dsh-cost-meter bundle patch —— 在 profile 树上插一行。
+#
+# 官方约定（抄自 dsh-todo-board 的同名文件）：
+#   * 插件行只有在**这个包被装成 profile 依赖**时才会激活。
+#     推荐方式：`dsh plugin --profile <名> add <绝对路径>`，
+#     或在「设置 → 插件」页面用安装框填这个目录的绝对路径。
+#     装成依赖后它会出现在插件页面的 bundle 列表里，可以启用/停用/卸载。
+#   * 这是 `insert`。**不要**再在用户自己的 cordis.patch.yml 里写一条同名顶层
+#     `- id:`，否则插件会注册两次。
+#   * 绝对不要用 `?v=`：loader 用 pathToFileURL() 生成模块地址，`?` 会被编码成
+#     %3F，模块名变成 xxx.mjs%3Fv=1 → ERR_MODULE_NOT_FOUND，插件静默不挂载。
+#
+# 宿主半：算价、峰谷、回溯补齐、/dsh-cost/api 路由。
+# 浏览器半：底部读数行那一格「已用人民币 X」+ 点击面板。
+- insert:
+    - id: dsh-cost-meter
+      name: 'dsh-cost-meter'

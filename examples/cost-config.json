@@ -1,0 +1,16 @@
+{
+  "_说明": "把这个文件复制到 ${DSH_HOME}/dsh-cost/cost-config.json （Windows: %USERPROFILE%\\.dsh\\dsh-cost\\cost-config.json）。文件不存在时全部走内置默认值，所以不建也能跑。改完下个轮询周期（约 2.5 秒）生效，不用重启。",
+
+  "holidays": [
+    "2027-01-01",
+    "2027-02-06"
+  ],
+
+  "providers": [
+    "my-official-gateway"
+  ],
+
+  "currency": "CNY",
+
+  "showPeakBadge": true
+}
