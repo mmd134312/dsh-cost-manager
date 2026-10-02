@@ -8,11 +8,16 @@
 [![license: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![node](https://img.shields.io/badge/node-%3E%3D22.19.0-43853d)](package.json)
 
-![底部那一格，以及点击后的明细面板](assets/banner.svg)
+![底部读数行里多出的一格](assets/screenshot-1.png)
 
-> 上图是**界面复刻**（直接用插件与官方组件同一套 CSS 画的，见 [`assets/mockup.html`](assets/mockup.html)）。
-> 想要真机截图：在浏览器里打开那个文件、截两块，存成 `assets/screenshot-1.png` /
-> `assets/screenshot-2.png`，再把这里换掉即可。
+底部读数行末尾多一格 `已用人民币 10.27`（悬停时出现浅灰圆角底，与原生那几粒一致）。
+
+**点它**，上方弹出明细面板：
+
+![点击后的明细面板](assets/screenshot-2.png)
+
+面板里能一眼看出这个数字的口径：三类 token 分开、计费调用次数（含回溯多少条）、
+高峰/空闲各花了多少、当前时段与切换倒计时、价目版本、用的哪个模型。
 
 ---
 
@@ -67,6 +72,17 @@ dsh plugin --profile desktop add link:/path/to/dsh-cost-meter
 用 `link:` 装的话，改完文件**不需要重新安装**：只改浏览器半
 （`client.js`）存盘即生效（HMR 自动换版本）；改宿主半
 （`dsh-cost-meter.mjs`）要重启 DSH。
+
+### DSH 版本要求 / DSH version requirement
+
+**本插件要求 DSH ≥ 0.2.0-rc.2，并已在 DSH 0.2.0-rc.2（Windows 桌面端）上验证。**
+
+| 你的 DSH | 装哪个版本 |
+| --- | --- |
+| 0.2.0-rc.2 及以上 | 当前版本 |
+| 更早 | 未验证 —— 本插件用的是 `dsh.bundle.patch` + `dsh.client` 这套声明，较早版本可能没有 |
+
+`engines.dsh` 只是**声明**：npm 只校验它认识的引擎名（`node` / `npm`），自定义引擎名不参与检查，所以**装错版本不会有安装期告警**，表现是运行时报错。
 
 ## 快速上手 / Quick start
 

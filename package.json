@@ -1,6 +1,6 @@
 {
   "name": "dsh-cost-meter",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "给 DeepSeek Harness 底部读数行补一格「已用人民币 X」：只统计 DeepSeek 官方通道，按峰谷定价算实际花费，缓存命中/未命中/输出三类 token 分别计价，每个会话独立记账，支持回溯补齐历史调用；第三方中转渠道一律不显示。",
   "private": false,
   "type": "module",
@@ -28,6 +28,7 @@
   "files": [
     "client.js",
     "locale",
+    "assets",
     "cordis.patch.yml",
     "dsh-cost-meter.mjs",
     "README.md",

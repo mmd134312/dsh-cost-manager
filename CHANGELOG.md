@@ -2,6 +2,22 @@
 
 本文件记录对用户可见的变化。格式参考 [Keep a Changelog](https://keepachangelog.com/zh-CN/1.1.0/)。
 
+## [1.2.1] — 2026-10-02
+
+**把真机截图放进 README，并补上 DSH 版本要求。**
+
+### Added
+
+- `assets/screenshot-1.png` —— 真机截图：底部读数行里多出的那一格
+  （`已用人民币 10.27`，悬停态的浅灰圆角底与原生读数粒一致）。
+- `assets/screenshot-2.png` —— 真机截图：点击后弹出的明细面板。
+- README 增加「DSH 版本要求」小节，含版本对照表。
+
+### Changed
+
+- README 顶部原来的界面复刻图（`assets/banner.svg`）替换为上面两张真机截图。
+  `banner.svg` 与 `assets/mockup.html` 保留在仓库里，改样式时仍可当参照。
+
 ## [1.2.0] — 2026-10-02
 
 **变成真正的 profile bundle：终于出现在「设置 → 插件」的列表里。**
